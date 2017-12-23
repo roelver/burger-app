@@ -4,5 +4,5 @@
 - Cleanup generated app details.
 - Include Google font Open Sans for nicer fonts. [c]
 - Add components and container folders
-- Add Layout component and include it in App
+- Add Layout component and include it in App [c]
 
