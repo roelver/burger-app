@@ -15,7 +15,9 @@ Git commands used:
   - Add components and container folders
   - Add Layout component and include it in App [c]
 - Lecture 109: 
-    - Add BurgerBuilder container and include it in App
-    - Add css for Layout [c]
-- Lecture 110:
+  - Add BurgerBuilder container and include it in App
+  - Add css for Layout [c]
+- Lecture 110 & 111:
+  - Add BurgerIngredient component with proptypes
+    
 
