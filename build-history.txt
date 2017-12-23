@@ -5,15 +5,17 @@ Git commands used:
    git commit -am ""
    git push -u origin master
 
-- Start project with: create-react-app burger-app
-- Get rid of the react-scripts (and allow CSS modules) with: npm run eject [c]
-- Setup webpack for CSS modules (dev+prod) [c]
-- Cleanup generated app details.
-- Include Google font Open Sans for nicer fonts. [c]
+- Lecture 107:
+  - Start project with: create-react-app burger-app
+  - Get rid of the react-scripts (and allow CSS modules) with: npm run eject [c]
+  - Setup webpack for CSS modules (dev+prod) [c]
 - Lecture 108:
+  - Cleanup generated app details.
+  - Include Google font Open Sans for nicer fonts. [c]
   - Add components and container folders
   - Add Layout component and include it in App [c]
 - Lecture 109: 
     - Add BurgerBuilder container and include it in App
     - Add css for Layout [c]
+- Lecture 110:
 
