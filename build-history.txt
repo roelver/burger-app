@@ -24,5 +24,8 @@ Lecture 112:
   - Setup the Burger.css with media queries [c]
 Lecture 113:
   - Dynamic ingredients on Burger [c]
+Lecture 114:
+  - Reduce the ingredients to a 1-dimentional array, in order to display a message.
+
 
 
