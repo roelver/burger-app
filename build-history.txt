@@ -1,0 +1,8 @@
+- Start project with: create-react-app burger-app
+- Get rid of the react-scripts (and allow CSS modules) with: npm run eject [c]
+- Setup webpack for CSS modules (dev+prod) [c]
+- Cleanup generated app details.
+- Include Google font Open Sans for nicer fonts. [c]
+- Add components and container folders
+- Add Layout component and include it in App
+
