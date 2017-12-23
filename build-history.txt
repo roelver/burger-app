@@ -10,6 +10,10 @@ Git commands used:
 - Setup webpack for CSS modules (dev+prod) [c]
 - Cleanup generated app details.
 - Include Google font Open Sans for nicer fonts. [c]
-- Add components and container folders
-- Add Layout component and include it in App [c]
+- Lecture 108:
+  - Add components and container folders
+  - Add Layout component and include it in App [c]
+- Lecture 109: 
+    - Add BurgerBuilder container and include it in App
+    - Add css for Layout [c]
 
