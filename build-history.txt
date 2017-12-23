@@ -19,5 +19,9 @@ Git commands used:
   - Add css for Layout [c]
 - Lecture 110 & 111:
   - Add BurgerIngredient component with proptypes
-    
+Lecture 112:
+  - Populate the Burger component
+  - Setup the Burger.css with media queries
+  
+
 
