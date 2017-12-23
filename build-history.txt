@@ -1,3 +1,10 @@
+Git commands used:
+   git init
+   git remote add origin https://github.com/roelver/burger-app.git
+   git add .
+   git commit -am ""
+   git push -u origin master
+
 - Start project with: create-react-app burger-app
 - Get rid of the react-scripts (and allow CSS modules) with: npm run eject [c]
 - Setup webpack for CSS modules (dev+prod) [c]
