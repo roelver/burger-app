@@ -21,7 +21,8 @@ Git commands used:
   - Add BurgerIngredient component with proptypes
 Lecture 112:
   - Populate the Burger component
-  - Setup the Burger.css with media queries
-  
+  - Setup the Burger.css with media queries [c]
+Lecture 113:
+  - Dynamic ingredients on Burger [c]
 
 
