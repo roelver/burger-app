@@ -42,6 +42,8 @@ Lecture 121 & 122:
   - Add Modal and show it [c]
 Lecture 123:
   - Add a clickable backdrop to cover the page [c]
-
-
-
+Lecture 124:
+  - Add reusable Button components
+Lecture 125:
+  - Use Button components to confirm the order [c]
+  

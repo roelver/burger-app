@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import classes from './BuildControls.css';
 import BuildControl from './BuildControl';
 import Modal from '../../common/Modal';
+import Button from '../../common/Button';
 import OrderSummary from '../OrderSummary/OrderSummary';
 
 const controls = [
@@ -52,8 +53,8 @@ class BuildControls extends Component {
                         order={this.props.ingredients} 
                         totalPrice={this.props.totalPrice}
                     />
-                    <button>Confirm</button>
-                    <button onClick={() => this.closeModal()}>Cancel</button>
+                    <Button handler={() => this.closeModal()} type="Success">Continue</Button>
+                    <Button handler={() => this.closeModal()} type="Danger">Cancel</Button>
                 </Modal>
         </div>
     );
