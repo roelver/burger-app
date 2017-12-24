@@ -40,8 +40,8 @@ Lecture 120:
   - Add Order Now button [c]
 Lecture 121 & 122:
   - Add Modal and show it [c]
-
-
+Lecture 123:
+  - Add a clickable backdrop to cover the page [c]
 
 
 

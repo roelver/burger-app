@@ -3,7 +3,6 @@ import React from 'react';
 import classes from './OrderSummary.css';
 
 const OrderSummary = (props) => {
-    console.log(props.labels, props.order);
     return (
         <div className={classes.OrderSummary}>
             <h3>Your order</h3>

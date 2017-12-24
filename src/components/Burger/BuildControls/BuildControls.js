@@ -34,8 +34,7 @@ class BuildControls extends Component {
                     <BuildControl 
                         key={control.type} 
                         label={control.label} 
-                        removeDisabled={this.props.disabledInfo[control.type] || this.state.modalIsOpen}
-                        addDisabled={this.state.modalIsOpen}
+                        removeDisabled={this.props.disabledInfo[control.type]}
                         addIngredientHandler={() => this.props.addIngredientHandler(control.type)}
                         removeIngredientHandler={() => this.props.removeIngredientHandler(control.type)}
                     />
@@ -43,10 +42,11 @@ class BuildControls extends Component {
             )}
             <button 
                 className={classes.OrderButton} 
-                disabled={this.props.orderDisabled || this.state.modalIsOpen}
+                disabled={this.props.orderDisabled}
                 onClick={() => this.openModal()}
                 >ORDER NOW</button>
-                <Modal show={this.state.modalIsOpen} >
+                
+                <Modal show={this.state.modalIsOpen} closeHandler={() => this.closeModal()}>
                     <OrderSummary 
                         labels={controls} 
                         order={this.props.ingredients} 
