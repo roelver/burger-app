@@ -1,7 +1,7 @@
 import React, {Fragment, Component} from 'react';
 
-import Toolbar from '../navigation/Toolbar';
-import SideDrawer from '../navigation/SideDrawer';
+import Toolbar from '../../components/navigation/Toolbar';
+import SideDrawer from '../../components/navigation/SideDrawer';
 import classes from './Layout.css';
 
 class Layout extends Component {

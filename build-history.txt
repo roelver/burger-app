@@ -58,6 +58,10 @@ Lecture 130 - 135:
   - Add Backdrop for open SideDrawer
   - Make the SideDrawer open/close
   - Change Menu in Hamburger icon [c]
+Lecture 137 - 140:
+  - Add proptyes to class components with this.props.* properties
+  - Render Modal only when it is visible.
+  - Move Layout to containers. [c]
 
 
 
