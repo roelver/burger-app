@@ -49,5 +49,8 @@ Lecture 125:
   - Use Button components to confirm the order [c]
 Lecture 127 & 128:
   - Add Toolbar
-  - Add a Logo
+  - Add a Logo [c]
+Lecture 129:
+  - Add navigation items [c]
+
 
