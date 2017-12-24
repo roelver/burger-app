@@ -38,6 +38,9 @@ Lecture 117 & 118 & 119:
   - Show the total price. [c]
 Lecture 120:
   - Add Order Now button [c]
+Lecture 121 & 122:
+  - Add Modal and show it [c]
+
 
 
 

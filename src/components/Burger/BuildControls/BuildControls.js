@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import classes from './BuildControls.css';
 import BuildControl from './BuildControl';
+import Modal from '../../common/Modal';
+import OrderSummary from '../OrderSummary/OrderSummary';
 
 const controls = [
    { label: 'Salad', type: 'salad'},
@@ -10,26 +12,52 @@ const controls = [
    { label: 'Meat', type: 'meat'}
 ];
 
-const buildControls = (props) => {
+class BuildControls extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            modalIsOpen: false
+        }
+    }
+    openModal() {
+        this.setState({modalIsOpen: true});
+    }
+
+    closeModal() {
+        this.setState({modalIsOpen: false});
+    }
+    
+    render() {
     return (
         <div className={classes.BuildControls }> 
             { controls.map( control => (
                     <BuildControl 
                         key={control.type} 
                         label={control.label} 
-                        removeDisabled={props.disabledInfo[control.type]}
-                        addIngredientHandler={() => props.addIngredientHandler(control.type)}
-                        removeIngredientHandler={() => props.removeIngredientHandler(control.type)}
+                        removeDisabled={this.props.disabledInfo[control.type] || this.state.modalIsOpen}
+                        addDisabled={this.state.modalIsOpen}
+                        addIngredientHandler={() => this.props.addIngredientHandler(control.type)}
+                        removeIngredientHandler={() => this.props.removeIngredientHandler(control.type)}
                     />
                 )
             )}
             <button 
                 className={classes.OrderButton} 
-                disabled={props.orderDisabled}
-                onClick={() => console.log('Order clicked')}
+                disabled={this.props.orderDisabled || this.state.modalIsOpen}
+                onClick={() => this.openModal()}
                 >ORDER NOW</button>
+                <Modal show={this.state.modalIsOpen} >
+                    <OrderSummary 
+                        labels={controls} 
+                        order={this.props.ingredients} 
+                        totalPrice={this.props.totalPrice}
+                    />
+                    <button>Confirm</button>
+                    <button onClick={() => this.closeModal()}>Cancel</button>
+                </Modal>
         </div>
     );
 }
+}
 
-export default buildControls;
+export default BuildControls;
