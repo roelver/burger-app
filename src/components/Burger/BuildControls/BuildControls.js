@@ -23,6 +23,11 @@ const buildControls = (props) => {
                     />
                 )
             )}
+            <button 
+                className={classes.OrderButton} 
+                disabled={props.orderDisabled}
+                onClick={() => console.log('Order clicked')}
+                >ORDER NOW</button>
         </div>
     );
 }

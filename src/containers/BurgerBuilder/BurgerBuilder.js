@@ -22,6 +22,12 @@ class BurgerBuilder extends Component {
         price: 3
     }
 
+    purchasable = () => {
+        const ingredients = {...this.state.ingredients};
+        return Object.values(ingredients)
+            .some(value => value > 0);
+    } 
+
     addIngredientHandler = (type) => {
         const ingredients = {...this.state.ingredients};
         const price = Math.round((this.state.price + PRICES[type]) * 100, 2) / 100;
@@ -48,6 +54,8 @@ class BurgerBuilder extends Component {
                 <Burger ingredients={this.state.ingredients} totalPrice={this.state.price}/>
                 <BuildControls 
                     disabledInfo={disabledInfo}
+                    totalPrice={this.state.price}
+                    orderDisabled={!this.purchasable()}
                     addIngredientHandler={this.addIngredientHandler.bind(this)}
                     removeIngredientHandler={this.removeIngredientHandler.bind(this)}
                 />
