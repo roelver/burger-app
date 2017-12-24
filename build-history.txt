@@ -52,5 +52,13 @@ Lecture 127 & 128:
   - Add a Logo [c]
 Lecture 129:
   - Add navigation items [c]
+Lecture 130 - 135:
+  - Add SideDrawer
+  - Make it responsive
+  - Add Backdrop for open SideDrawer
+  - Make the SideDrawer open/close
+  - Change Menu in Hamburger icon [c]
+
+
 
 
