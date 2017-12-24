@@ -38,7 +38,8 @@ Lecture 117 & 118 & 119:
   - Show the total price. [c]
 Lecture 120:
   - Add Order Now button [c]
-Lecture 121 & 122:
+Lecture 121 & 122 & 126:
+  - Add OrderSummary for Modal
   - Add Modal and show it [c]
 Lecture 123:
   - Add a clickable backdrop to cover the page [c]
@@ -46,4 +47,7 @@ Lecture 124:
   - Add reusable Button components
 Lecture 125:
   - Use Button components to confirm the order [c]
-  
+Lecture 127 & 128:
+  - Add Toolbar
+  - Add a Logo
+
