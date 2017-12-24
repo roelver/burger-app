@@ -14,9 +14,10 @@ const burger = (props) => {
             }, []);
     return (
         <div className={ classes.Burger }>
+            <p className={classes.Price}>Your price: ${props.totalPrice.toFixed(2)}</p>
             <BurgerIngredient type="bread-top"/>
             { ingredients.length > 0 ? ingredients : <p>Please add ingredients to your burger</p> }
-            {/* My solution:::::
+            {/* My solution:
             { ingredients.map(key => {
                 const counter = props.ingredients[key];
                 let ingredientList = [];

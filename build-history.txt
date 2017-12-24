@@ -27,7 +27,15 @@ Lecture 113:
 Lecture 114:
   - Reduce the ingredients to a 1-dimentional array, in order to display a message.
 Lecture 115 & 116:
-  - Add BuildControls and styling.
+  - Add BuildControls and styling. [c]
+Lecture 117 & 118 & 119:
+  - Add methods for adding ingredients to the state.
+  - Add methods for removing ingredients from the state.
+  - Adjust the total price in the state. 
+  - Wire up handlers.
+  - Visualize the Burger.
+  - Disable Less button if ingredient count = 0
+  - Show the total price. [c]
 
 
 
