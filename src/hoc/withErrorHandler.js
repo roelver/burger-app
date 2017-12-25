@@ -13,13 +13,19 @@ const withErrorHandler = (WrappedComponent, axios) => {
         resetError = () => {
             this.setState({error: undefined});
         }
-        componentDidMount() {
-            axios.interceptors.request.use(request => {
+        componentWillMount() {
+            this.requestInterceptor = axios.interceptors.request.use(request => {
                 this.resetError();
                 return request;
             });
-            axios.interceptors.response.use(res => res, error => this.setState({error: error}));
+            this.responseInterceptor = axios.interceptors.response.use(res => res, error => this.setState({error: error}));
         }
+
+        componentWillUnmount() {
+            axios.interceptors.request.eject(this.requestInterceptor);
+            axios.interceptors.response.eject(this.responseInterceptor);
+        }
+
         render() {
             return (
                 <Fragment>

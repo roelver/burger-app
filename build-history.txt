@@ -68,6 +68,9 @@ Lecture 163 - 166:
   - Show spinner while request is pending
   - Global error handler 
   - Move total brice to BuildControls [c]
+Lecture 167-168:
+  - Get ingredients from firebase
+  - Cleanup intercepters on component unmount [c]
 
 
 

@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
 import axios from '../../axios-orders';
+import Spinner from '../../components/common/Spinner';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import withErrorHandler from '../../hoc/withErrorHandler';
@@ -15,13 +16,22 @@ const PRICES = {
 class BurgerBuilder extends Component {
 
     state = {
-        ingredients: {
-            salad: 0,
-            cheese: 0,
-            bacon: 0,
-            meat: 0
-        },
-        price: 3
+        // ingredients: {
+        //     salad: 0,
+        //     cheese: 0,
+        //     bacon: 0,
+        //     meat: 0
+        // },
+        price: 3,
+        error: null
+    }
+
+    componentDidMount() {
+        axios.get('/ingredients.json')
+        .then(response => {
+            this.setState({ingredients: response.data });
+        })
+        .catch(error => {this.setState({error: error})});
     }
 
     purchasable = () => {
@@ -75,7 +85,7 @@ class BurgerBuilder extends Component {
         for (let key in disabledInfo) {
             disabledInfo[key] = disabledInfo[key] <= 0;
         }
-        return (
+        const ui = this.state.ingredients ?
             <Fragment>
                 <Burger ingredients={this.state.ingredients} totalPrice={this.state.price}/>
                 <BuildControls 
@@ -86,7 +96,16 @@ class BurgerBuilder extends Component {
                     sendOrder={this.sendOrder.bind(this)}
                     addIngredientHandler={this.addIngredientHandler.bind(this)}
                     removeIngredientHandler={this.removeIngredientHandler.bind(this)}
-                />
+                /> 
+            </Fragment> : 
+                !this.state.error ?
+                    <Spinner /> : 
+                    <p style={{ textAlign: 'center'}}>
+                        <strong>Fatal Error. The Burger App is out of order</strong>
+                    </p> ;
+        return (
+            <Fragment>
+                { ui }
             </Fragment>
         );
     }

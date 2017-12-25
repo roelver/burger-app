@@ -76,7 +76,7 @@ class BuildControls extends Component {
 }
 
 BuildControls.propTypes = {
-    ingredients: PropTypes.object.isRequired,
+    ingredients: PropTypes.object,
     totalPrice: PropTypes.number.isRequired,
     orderDisabled: PropTypes.bool,
     addIngredientHandler: PropTypes.func.isRequired,

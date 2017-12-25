@@ -4,7 +4,7 @@ import classes from './Burger.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
 const burger = (props) => {
-    const ingredients = Object.keys(props.ingredients)
+    const ingredients = Object.keys(props.ingredients || {})
             .map(igKey => {
                 return [...Array(props.ingredients[igKey])]  // Create an array of the correct length
                         .map((x, i) => <BurgerIngredient key={igKey + i} type={igKey} />)
