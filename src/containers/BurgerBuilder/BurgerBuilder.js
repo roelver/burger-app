@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
 
+import axios from '../../axios-orders';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
+import withErrorHandler from '../../hoc/withErrorHandler';
 
 const PRICES = {
     salad: 0.4,
@@ -43,7 +45,31 @@ class BurgerBuilder extends Component {
             this.setState({ingredients, price});
         }
     }
-        
+    
+    sendOrder = (callback) => {
+        const order = {
+            price: this.state.price,
+            ingredients: this.state.ingredients,
+            deliveryMethod: 'fastest',
+            customer: {
+                name: 'Roel Verbunt',
+                address: {
+                    street: 'Test street 2',
+                    zipcode: '3622',
+                    city: 'Testtown',
+                    country: 'Netherlands'
+                },
+                email: 'roel@romaniflo.nl'
+            }
+        };
+        axios.post('/orders.json', order)
+            .then(response => {
+                this.setState({price: 3, ingredients: {salad: 0,cheese: 0,bacon: 0, meat: 0 } });
+                callback();
+            });
+    }
+
+
     render() {
         const disabledInfo = {...this.state.ingredients};
         for (let key in disabledInfo) {
@@ -57,6 +83,7 @@ class BurgerBuilder extends Component {
                     totalPrice={this.state.price}
                     ingredients={this.state.ingredients}
                     orderDisabled={!this.purchasable()}
+                    sendOrder={this.sendOrder.bind(this)}
                     addIngredientHandler={this.addIngredientHandler.bind(this)}
                     removeIngredientHandler={this.removeIngredientHandler.bind(this)}
                 />
@@ -65,4 +92,4 @@ class BurgerBuilder extends Component {
     }
 }
 
-export default BurgerBuilder;
+export default withErrorHandler(BurgerBuilder, axios);

@@ -62,6 +62,12 @@ Lecture 137 - 140:
   - Add proptyes to class components with this.props.* properties
   - Render Modal only when it is visible.
   - Move Layout to containers. [c]
+Lecture 163 - 166:
+  - Add axios as a dependency
+  - Post order to firebase
+  - Show spinner while request is pending
+  - Global error handler 
+  - Move total brice to BuildControls [c]
 
 
 

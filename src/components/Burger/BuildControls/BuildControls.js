@@ -5,6 +5,7 @@ import classes from './BuildControls.css';
 import BuildControl from './BuildControl';
 import Modal from '../../common/Modal';
 import Button from '../../common/Button';
+import Spinner from '../../common/Spinner';
 import OrderSummary from '../OrderSummary/OrderSummary';
 
 const controls = [
@@ -17,20 +18,34 @@ const controls = [
 class BuildControls extends Component {
     
     state = {
-        modalIsOpen: false
+        modalIsOpen: false,
+        requestPending: false
     }
     
     openModal() {
         this.setState({modalIsOpen: true});
     }
 
-    closeModal() {
-        this.setState({modalIsOpen: false});
+    closeModal = () => {
+        this.setState({modalIsOpen: false, requestPending: false});
     }
     
+
     render() {
+        const modalContent = this.state.modalIsOpen ?
+           (this.state.requestPending ?
+                <Spinner/> 
+                :
+                <OrderSummary 
+                    labels={controls} 
+                    order={this.props.ingredients} 
+                    totalPrice={this.props.totalPrice}
+                />
+            ) :
+            null; 
         return (
             <div className={classes.BuildControls }> 
+                <p className={classes.Price}>Your price: ${this.props.totalPrice.toFixed(2)}</p>
                 { controls.map( control => (
                         <BuildControl 
                             key={control.type} 
@@ -48,12 +63,11 @@ class BuildControls extends Component {
                     >ORDER NOW</button>
                     
                     <Modal show={this.state.modalIsOpen} closeHandler={() => this.closeModal()}>
-                        <OrderSummary 
-                            labels={controls} 
-                            order={this.props.ingredients} 
-                            totalPrice={this.props.totalPrice}
-                        />
-                        <Button handler={() => this.closeModal()} type="Success">Continue</Button>
+                         { modalContent }
+                         <Button handler={() => {
+                            this.setState({requestPending: true});
+                            this.props.sendOrder(this.closeModal);
+                        }} type="Success">Continue</Button>
                         <Button handler={() => this.closeModal()} type="Danger">Cancel</Button>
                     </Modal>
             </div>
@@ -67,6 +81,7 @@ BuildControls.propTypes = {
     orderDisabled: PropTypes.bool,
     addIngredientHandler: PropTypes.func.isRequired,
     removeIngredientHandler: PropTypes.func.isRequired,
+    sendOrder: PropTypes.func.isRequired,
     disabledInfo: PropTypes.object.isRequired
 }
 
