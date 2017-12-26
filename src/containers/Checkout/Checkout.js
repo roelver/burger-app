@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 
 import CheckoutSummary from '../../components/Order/CheckoutSummary';
+import OrderForm from '../../components/Order/OrderForm';
 
 class Checkout extends Component {
 
@@ -15,14 +17,13 @@ class Checkout extends Component {
     }
 
     componentWillMount() {
-        console.log('Checkout', this.props.location)
         this.setState(this.props.location.state);
     }
     toBurgerBuilder = () => {
         this.props.history.goBack();
     }
     toOrderDetails = () => {
-        this.props.history.replace('/orderform', this.state);
+        this.props.history.replace('/checkout/orderform', this.state);
     }
     render() {
         return (
@@ -32,6 +33,8 @@ class Checkout extends Component {
                     totalPrice={this.state.totalPrice} 
                     cancelHandler={this.backToBurgerBuilder}
                     continueHandler={this.toOrderDetails}/>
+                <Route path={this.props.match.path + '/orderform'} component={OrderForm} />
+
             </div>
         );
     }

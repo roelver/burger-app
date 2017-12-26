@@ -71,12 +71,13 @@ Lecture 163 - 166:
 Lecture 167-168:
   - Get ingredients from firebase
   - Cleanup intercepters on component unmount [c]
-Lecture 203-207:
+Lecture 203-208:
   - Add routing
   - Add a checkout container
   - Add a checkout summary page
   - Add a very simple Order Form
-  - Submit the order from the Order form submit.
+  - Submit the order from the Order form submit. [c]
+  - Use spinner and Button on Order Form [c]
 
 
 

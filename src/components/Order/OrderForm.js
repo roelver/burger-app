@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from '../../axios-orders';
 
 import classes from './OrderForm.css';
+import Button from '../common/Button';
+import Spinner from '../common/Spinner';
 
 class OrderForm extends Component {
 
@@ -13,13 +15,16 @@ class OrderForm extends Component {
             country: 'Netherlands'
         },
         phone: '06-12345678',
-        email: 'roel@test.com'
+        email: 'roel@test.com',
+        spinning: false
     }
 
     componentWillMount() {
         this.setState(this.props.location.state);
     }
+
     sendOrder = (event) => {
+        this.setState({spinning: true});
         event.preventDefault();
         console.log('send order', this.state);
 
@@ -35,7 +40,6 @@ class OrderForm extends Component {
         };
         axios.post('/orders.json', order)
             .then(response => {
-                this.setState({price: 3, ingredients: {salad: 0,cheese: 0,bacon: 0, meat: 0 } });
                 this.props.history.push('/');
             });
     }
@@ -43,14 +47,18 @@ class OrderForm extends Component {
     render() {
         return (
             <div className={classes.OrderForm}>
-                <form onSubmit={this.sendOrder}>
-                    <div>
-                        <label htmlFor="name">Name</label>
-                        <input name="name" type="text" value={this.state.name} onChange={(event) => this.setState({name: event.target.value})}/>
-                    </div>
-                    <button type="submit">Send order</button> 
-                </form>
-            </div>
+            {
+                this.state.spinning ?
+                    <Spinner/> :
+                    <form onSubmit={this.sendOrder}>
+                        <div>
+                            <label htmlFor="name">Name</label>
+                            <input name="name" type="text" value={this.state.name} onChange={(event) => this.setState({name: event.target.value})}/>
+                        </div>
+                        <Button type="Success" handler={this.sendOrder}>ORDER NOW</Button> 
+                    </form>
+            }
+        </div>
         );
     }
 }
