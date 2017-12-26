@@ -77,6 +77,7 @@ Lecture 203-208:
   - Add a checkout summary page
   - Add a very simple Order Form
   - Submit the order from the Order form submit. [c]
+  - Move Order form to sub route
   - Use spinner and Button on Order Form [c]
 
 
