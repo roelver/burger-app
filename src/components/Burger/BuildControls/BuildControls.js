@@ -66,7 +66,7 @@ class BuildControls extends Component {
                          { modalContent }
                          <Button handler={() => {
                             this.setState({requestPending: true});
-                            this.props.sendOrder(this.closeModal);
+                            this.props.toCheckout();
                         }} type="Success">Continue</Button>
                         <Button handler={() => this.closeModal()} type="Danger">Cancel</Button>
                     </Modal>
@@ -80,9 +80,10 @@ BuildControls.propTypes = {
     totalPrice: PropTypes.number.isRequired,
     orderDisabled: PropTypes.bool,
     addIngredientHandler: PropTypes.func.isRequired,
+    toCheckout: PropTypes.func.isRequired,
     removeIngredientHandler: PropTypes.func.isRequired,
-    sendOrder: PropTypes.func.isRequired,
     disabledInfo: PropTypes.object.isRequired
 }
+//sendOrder: PropTypes.func.isRequired,
 
 export default BuildControls;

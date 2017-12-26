@@ -27,11 +27,13 @@ class BurgerBuilder extends Component {
     }
 
     componentDidMount() {
-        axios.get('/ingredients.json')
-        .then(response => {
-            this.setState({ingredients: response.data });
-        })
-        .catch(error => {this.setState({error: error})});
+        if (!this.state.ingredients) {
+            axios.get('/ingredients.json')
+            .then(response => {
+                this.setState({ingredients: response.data });
+            })
+            .catch(error => {this.setState({error: error})});
+        }
     }
 
     purchasable = () => {
@@ -56,35 +58,21 @@ class BurgerBuilder extends Component {
         }
     }
     
-    sendOrder = (callback) => {
-        const order = {
-            price: this.state.price,
+    toCheckout = () => {
+        this.props.history.push('/checkout', 
+        {
             ingredients: this.state.ingredients,
-            deliveryMethod: 'fastest',
-            customer: {
-                name: 'Roel Verbunt',
-                address: {
-                    street: 'Test street 2',
-                    zipcode: '3622',
-                    city: 'Testtown',
-                    country: 'Netherlands'
-                },
-                email: 'roel@romaniflo.nl'
-            }
-        };
-        axios.post('/orders.json', order)
-            .then(response => {
-                this.setState({price: 3, ingredients: {salad: 0,cheese: 0,bacon: 0, meat: 0 } });
-                callback();
-            });
+            totalPrice: this.state.price
+        });
     }
-
 
     render() {
         const disabledInfo = {...this.state.ingredients};
         for (let key in disabledInfo) {
             disabledInfo[key] = disabledInfo[key] <= 0;
         }
+    //    sendOrder={this.sendOrder.bind(this)}
+        
         const ui = this.state.ingredients ?
             <Fragment>
                 <Burger ingredients={this.state.ingredients} totalPrice={this.state.price}/>
@@ -93,7 +81,7 @@ class BurgerBuilder extends Component {
                     totalPrice={this.state.price}
                     ingredients={this.state.ingredients}
                     orderDisabled={!this.purchasable()}
-                    sendOrder={this.sendOrder.bind(this)}
+                    toCheckout={this.toCheckout.bind(this)}
                     addIngredientHandler={this.addIngredientHandler.bind(this)}
                     removeIngredientHandler={this.removeIngredientHandler.bind(this)}
                 /> 
